@@ -76,7 +76,8 @@ class VillageLetter(TimeStampedModel):
         verbose_name=_("Owner"),
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name="village_letters"
     )
 
     class Meta:
@@ -111,7 +112,8 @@ class QuestionAnswerChoice(TimeStampedModel):
         "mfy.VillageLetterQuestions",
         verbose_name=_("Question"),
         on_delete=models.CASCADE,
-        null=True
+        null=True,
+        related_name="answer_choices"
     )
     text = models.TextField(_("Text"))
 
@@ -126,14 +128,15 @@ class QuestionAnswerChoice(TimeStampedModel):
 class VillageInventor(TimeStampedModel):
     full_name = models.CharField(_("Full name"), max_length=512)
     type_of_invention = models.CharField(_("Type of invention"), max_length=256, null=True, blank=True)
-    invention_photo = models.ImageField(_("Invetion photo"), upload_to="invention_photo")
+    invention_photo = models.ImageField(_("Invetion photo"), upload_to="invention_photo", null=True, blank=True)
     importance_invention = models.TextField(_("Importance invention"), null=True, blank=True)
     owner = models.ForeignKey(
         "users.User",
         verbose_name=_("Owner"),
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name="village_inventor"
     )
 
     class Meta:
