@@ -179,7 +179,8 @@ class VillageBusinnesmenProduct(TimeStampedModel):
         verbose_name=_("Village Businnesmen"),
         on_delete=models.CASCADE,
         null=True,
-        blank=True
+        blank=True,
+        related_name="products",
     )
 
     class Meta:

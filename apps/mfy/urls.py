@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.mfy.api_endpoints import village_center, village_letter, village_inventor
+from apps.mfy.api_endpoints import village_center, village_letter, village_inventor, village_businnesmen, jobseeker
 
 urlpatterns = [
     path("VillageCenter/", village_center.VillageCenterAPIView.as_view(), name="VillageCenter"),
@@ -23,5 +23,21 @@ urlpatterns = [
         village_inventor.VillageInventorListAPIView.as_view(),
         name="VillageInventorList"
     ),
+    path(
+        "VillageBusinnesmen/",
+        village_businnesmen.VillageBusinnesmenAPIView.as_view(),
+        name="VillageBusinnesmen"
+    ),
+    path(
+        "VillageBusinnesmenProduct/",
+        village_businnesmen.VillageBusinnesmenProductAPIView.as_view(),
+        name="VillageBusinnesmenProduct"
+    ),
+    path(
+        "VillageBusinnesmenList/",
+        village_businnesmen.VillageBusinnesmenListAPIView.as_view(),
+        name="VillageBusinnesmenList"
+    ),
+    path("JobSeekerCreate/", jobseeker.JobSeekerCreateAPIView.as_view(), name="JobSeekerCreate"),
 
 ]

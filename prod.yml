@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  web: &web
+    container_name: ${PROJECT_NAME}_backend
+    restart: always
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:${PORT} --workers 4
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - ./static:/home/app/web/static
+      - ./media:/home/app/web/media
+      - ./locale:/home/app/web/locale
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Tashkent
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db
+      - redis
+
+  db:
+    container_name: ${PROJECT_NAME}_DB
+    image: postgres:13.4-buster
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST}
+      - POSTGRES_PORT=${DB_PORT}
+    restart: always
+
+
+  redis:
+    container_name: ${PROJECT_NAME}_redis
+    image: redis:6-alpine
+    restart: always
+
+
+volumes:
+  postgres_data:
+  static_volume:

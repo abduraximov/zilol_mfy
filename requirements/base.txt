@@ -9,3 +9,4 @@ django-filter==24.1
 django-ckeditor==6.5.1
 django-phonenumber-field==7.0.2
 phonenumbers==8.13.9
+Pillow==9.1.1
