@@ -2,19 +2,21 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
-jobs:
-  Deploy:
+    branches: [ main ]
 
+jobs:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Deploy
-      run: |
-        whoami
-        cd /var/www/zilol_mfy
-        git pull
-        docker-compose -f prod.yml up -d --build
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy
+        run: |
+          mkdir -p /var/www/zilol_mfy/backends
+          cd /var/www/zilol_mfy/backends || exit
+          git clone https://github.com/yourusername/yourproject.git .
+          docker-compose -f prod.yml up -d --build
