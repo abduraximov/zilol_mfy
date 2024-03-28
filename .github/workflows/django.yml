@@ -11,7 +11,7 @@ jobs:
     - name: connect and pull
       working-directory: /var/www/zilol_mfy
       run: |
-          cd /var/www/zilol_mfy &&
-          git checkout main &&
-          sudo git pull &&
-          docker-compose -f prod.yml up -d --build
+          whoami
+          cd /var/www/zilol_mfy
+          git pull
+          docker compose -f prod.yml up -d --build
