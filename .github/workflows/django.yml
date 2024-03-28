@@ -13,4 +13,4 @@ jobs:
       run: |
           cd /var/www/zilol_mfy &&
           git checkout main &&
-          git pull && docker-compose -f prod.yml up --build -d
+          sudo git pull && sudo docker-compose -f prod.yml up --build -d
