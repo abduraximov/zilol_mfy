@@ -7,7 +7,7 @@ from .generator import BothHttpAndHttpsSchemaGenerator
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Zilol_MFY API",
+        title="API Documentation",
         default_version="v1",
         description="Zilol_MFY API",
         terms_of_service="https://www.google.com/policies/terms/",
