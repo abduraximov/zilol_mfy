@@ -13,4 +13,4 @@ jobs:
           whoami
           cd /var/www/zilol_mfy
           git pull
-          docker compose -f prod.yml up -d --build
+          sudo docker compose -f prod.yml up -d --build
