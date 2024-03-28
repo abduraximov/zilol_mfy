@@ -2,29 +2,24 @@ name: Django CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
+env:
+  SSH_HOST: ${{ secrets.SERVER_IP }}
+  SSH_USER: ${{ secrets.SERVER_USERNAME }}
+  SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
-  deploy:
+  Deploy:
+
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
-      - name: Deploy
-        run: |
-          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'bash -s' << 'EOF'
-          whoami
-          cd /var/www/zilol_mfy
-          git pull
-          docker-compose -f prod.yml up -d --build
-          EOF
-
+    - uses: actions/checkout@v3
+    - name: Deploy
+      run: |
+        whoami
+        cd /var/www/zilol_mfy
+        git pull
+        docker-compose -f prod.yml up -d --build
