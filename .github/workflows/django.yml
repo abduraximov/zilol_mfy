@@ -16,6 +16,7 @@ jobs:
 
       - name: Deploy
         run: |
+          sudo mkdir -p /var/www/zilol_mfy
           cd /var/www/zilol_mfy || exit
           sudo git clone https://github.com/yourusername/yourproject.git .
           docker-compose -f prod.yml up -d --build
