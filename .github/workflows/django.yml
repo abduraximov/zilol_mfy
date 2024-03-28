@@ -2,24 +2,20 @@ name: Django CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
-env:
-  SSH_HOST: ${{ secrets.SERVER_IP }}
-  SSH_USER: ${{ secrets.SERVER_USERNAME }}
-  SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    branches: [ "main" ]
+
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  Deploy:
+
+    runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Deploy
-        run: |
-          sudo mkdir -p /var/www/backends/zilol_mfy
-          cd /var/www/backends/zilol_mfy || exit
-          # sudo https://github.com/abduraximov/zilol_mfy.git .
-          # docker-compose -f prod.yml up -d --build
+    - uses: actions/checkout@v3
+    - name: Deploy
+      run: |
+        whoami
+        cd /var/www/zilol_mfy
+        git pull
+        docker-compose -f prod.yml up -d --build
