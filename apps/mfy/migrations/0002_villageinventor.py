@@ -6,24 +6,59 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mfy', '0001_initial'),
+        ("mfy", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='VillageInventor',
+            name="VillageInventor",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('full_name', models.CharField(max_length=512, verbose_name='Full name')),
-                ('type_of_invention', models.CharField(blank=True, max_length=256, null=True, verbose_name='Type of invention')),
-                ('invention_photo', models.ImageField(upload_to='invention_photo', verbose_name='Invetion photo')),
-                ('importance_invention', models.TextField(blank=True, null=True, verbose_name='Importance invention')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "full_name",
+                    models.CharField(max_length=512, verbose_name="Full name"),
+                ),
+                (
+                    "type_of_invention",
+                    models.CharField(
+                        blank=True,
+                        max_length=256,
+                        null=True,
+                        verbose_name="Type of invention",
+                    ),
+                ),
+                (
+                    "invention_photo",
+                    models.ImageField(
+                        upload_to="invention_photo", verbose_name="Invetion photo"
+                    ),
+                ),
+                (
+                    "importance_invention",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="Importance invention"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Village Inventor',
-                'verbose_name_plural': 'Village Inventors',
+                "verbose_name": "Village Inventor",
+                "verbose_name_plural": "Village Inventors",
             },
         ),
     ]

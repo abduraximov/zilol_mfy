@@ -13,4 +13,12 @@ class WorkerInfoListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = WorkerInfo
-        fields = ("id", "position", "full_name", "photo", "about", "phone_numbers", "work_times")
+        fields = (
+            "id",
+            "position",
+            "full_name",
+            "photo",
+            "about",
+            "phone_numbers",
+            "work_times",
+        )

@@ -9,33 +9,65 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('mfy', '0004_villageinventor_owner_villageletter_owner_and_more'),
+        ("mfy", "0004_villageinventor_owner_villageletter_owner_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='questionanswerchoice',
-            name='question',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='answer_choices', to='mfy.villageletterquestions', verbose_name='Question'),
+            model_name="questionanswerchoice",
+            name="question",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="answer_choices",
+                to="mfy.villageletterquestions",
+                verbose_name="Question",
+            ),
         ),
         migrations.AlterField(
-            model_name='villagebusinnesmenproduct',
-            name='village_businnesmen',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='products', to='mfy.villagebusinnesmen', verbose_name='Village Businnesmen'),
+            model_name="villagebusinnesmenproduct",
+            name="village_businnesmen",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="products",
+                to="mfy.villagebusinnesmen",
+                verbose_name="Village Businnesmen",
+            ),
         ),
         migrations.AlterField(
-            model_name='villageinventor',
-            name='invention_photo',
-            field=models.ImageField(blank=True, null=True, upload_to='invention_photo', verbose_name='Invetion photo'),
+            model_name="villageinventor",
+            name="invention_photo",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="invention_photo",
+                verbose_name="Invetion photo",
+            ),
         ),
         migrations.AlterField(
-            model_name='villageinventor',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='village_inventor', to=settings.AUTH_USER_MODEL, verbose_name='Owner'),
+            model_name="villageinventor",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="village_inventor",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Owner",
+            ),
         ),
         migrations.AlterField(
-            model_name='villageletter',
-            name='owner',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='village_letters', to=settings.AUTH_USER_MODEL, verbose_name='Owner'),
+            model_name="villageletter",
+            name="owner",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="village_letters",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Owner",
+            ),
         ),
     ]

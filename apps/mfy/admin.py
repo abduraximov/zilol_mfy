@@ -1,41 +1,52 @@
 from django.contrib import admin
 from .models import (
-    VillageCenter, WorkerPosition,
-    WorkerInfo, Street, VillageLetter,
-    VillageLetterQuestions, QuestionAnswerChoice, VillageInventor,
-    VillageBusinnesmen, VillageBusinnesmenProduct, JobSeeker
+    VillageCenter,
+    WorkerPosition,
+    WorkerInfo,
+    Street,
+    VillageLetter,
+    VillageLetterQuestions,
+    QuestionAnswerChoice,
+    VillageInventor,
+    VillageBusinnesmen,
+    VillageBusinnesmenProduct,
+    JobSeeker,
 )
 
 
 @admin.register(VillageCenter)
 class VillageCenterAdmin(admin.ModelAdmin):
-    list_display = ('name', 'location', 'phone_number')
-    search_fields = ('name',)
+    list_display = ("name", "location", "phone_number")
+    search_fields = ("name",)
 
 
 @admin.register(WorkerPosition)
 class WorkerPositionAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ("name",)
 
 
 @admin.register(WorkerInfo)
 class WorkerInfoAdmin(admin.ModelAdmin):
-    list_display = ('position', 'full_name', 'created_at')
-    list_filter = ('position',)
+    list_display = ("position", "full_name", "created_at")
+    list_filter = ("position",)
 
 
 @admin.register(Street)
 class StreetAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ("name",)
 
 
 @admin.register(VillageLetter)
 class VillageLetterAdmin(admin.ModelAdmin):
     list_display = (
-        'street', 'home_number', 'householder',
-        'family_member', 'home_info', 'suggestions_problems'
+        "street",
+        "home_number",
+        "householder",
+        "family_member",
+        "home_info",
+        "suggestions_problems",
     )
-    search_fields = ('home_number', 'householder')
+    search_fields = ("home_number", "householder")
 
 
 class WorkerInfoInline(admin.TabularInline):
@@ -45,7 +56,7 @@ class WorkerInfoInline(admin.TabularInline):
 
 @admin.register(VillageLetterQuestions)
 class VillageLetterQuestionsAdmin(admin.ModelAdmin):
-    list_display = ('type', 'text_question')
+    list_display = ("type", "text_question")
     inlines = [WorkerInfoInline]
 
 
@@ -67,6 +78,3 @@ class VillageBusinnesmenProductAdmin(admin.ModelAdmin):
 @admin.register(JobSeeker)
 class JobSeekerAdmin(admin.ModelAdmin):
     list_display = ("home_number", "address", "full_name")
-
-
-

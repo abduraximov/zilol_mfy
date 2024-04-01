@@ -19,7 +19,9 @@ class User(AbstractUser, TimeStampedModel):
     first_name = None
     last_name = None
     full_name = models.CharField(_("Full name"), max_length=32, null=True, blank=True)
-    gender = models.CharField(verbose_name=_("Gender"), max_length=10, choices=GenderType.choices, null=True)
+    gender = models.CharField(
+        verbose_name=_("Gender"), max_length=10, choices=GenderType.choices, null=True
+    )
 
     objects = UserManager()
     USERNAME_FIELD = "phone"
@@ -34,4 +36,3 @@ class User(AbstractUser, TimeStampedModel):
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
-

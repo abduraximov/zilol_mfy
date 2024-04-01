@@ -29,9 +29,11 @@ class VillageBusinnesmenProductSerilizer(serializers.ModelSerializer):
         if not VillageBusinnesmen.objects.filter(id=value, owner=user).exists():
             raise serializers.ValidationError(
                 detail={
-                    "village_businnesmen_id": _("You can't add product to this village businnesmen."),
-                    "error": _("invalid_pk_or_owner")
+                    "village_businnesmen_id": _(
+                        "You can't add product to this village businnesmen."
+                    ),
+                    "error": _("invalid_pk_or_owner"),
                 },
-                code="invalid_pk_or_owner"
+                code="invalid_pk_or_owner",
             )
         return value

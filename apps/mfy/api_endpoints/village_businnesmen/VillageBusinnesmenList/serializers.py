@@ -24,4 +24,3 @@ class VillageBusinnesmenListSerilizer(serializers.ModelSerializer):
             "longitude",
             "products",
         )
-

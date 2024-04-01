@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class MfyConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.mfy'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.mfy"
