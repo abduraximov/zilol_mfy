@@ -69,4 +69,14 @@ urlpatterns = [
         jobseeker.JobSeekerCreateAPIView.as_view(),
         name="JobSeekerCreate",
     ),
+    path(
+        "UserVillageBusinnesmens/",
+        village_businnesmen.UserVillageBusinnesmensAPIView.as_view(),
+        name="UserVillageBusinnesmens"
+    ),
+    path(
+        "UserVillageInventors",
+        village_inventor.UserVillageInventorsAPIView.as_view(),
+        name="UserVillageInventors"
+    )
 ]
